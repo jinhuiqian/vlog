@@ -14,33 +14,33 @@ public class DataUtil {
         Card[] cards = new Card[]{
                 Card.builder()
                         .id(1)
-                        .title("java学习")
-                        .bgImg("http://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/java.jpg")
-                        .content("java学习")
+                        .title("java")
+                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Java.jpg")
+                        .content("java")
                         .build(),
                 Card.builder()
                         .id(1)
-                        .title("java Script学习")
-                        .bgImg("http://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/javaScript.jpg")
-                        .content("java Script学习")
+                        .title("java Script")
+                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/JavaScript.jpg")
+                        .content("java Script")
                         .build(),
                 Card.builder()
                         .id(1)
-                        .title("Linux学习")
-                        .bgImg("http://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Linux.jpg")
-                        .content("Linux学习")
+                        .title("Linux")
+                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Linux.jpg")
+                        .content("Linux")
                         .build(),
                 Card.builder()
                         .id(1)
-                        .title("MySql学习")
-                        .bgImg("http://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/MySql.jpg")
-                        .content("SpringCloud学习")
+                        .title("MySql")
+                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/MySQL.jpg")
+                        .content("MySql")
                         .build(),
                 Card.builder()
                         .id(1)
-                        .title("Python学习")
-                        .bgImg("http://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Python.jpg")
-                        .content("SpringCloud学习")
+                        .title("Python")
+                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Python.jpg")
+                        .content("MySql")
                         .build(),
         };
         return Arrays.asList(cards);

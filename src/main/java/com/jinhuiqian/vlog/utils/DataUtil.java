@@ -15,31 +15,31 @@ public class DataUtil {
                 Card.builder()
                         .id(1)
                         .title("java")
-                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Java.jpg")
+                        .bgImg("")
                         .content("java")
                         .build(),
                 Card.builder()
                         .id(1)
                         .title("java Script")
-                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/JavaScript.jpg")
+                        .bgImg("")
                         .content("java Script")
                         .build(),
                 Card.builder()
                         .id(1)
                         .title("Linux")
-                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Linux.jpg")
+                        .bgImg("")
                         .content("Linux")
                         .build(),
                 Card.builder()
                         .id(1)
                         .title("MySql")
-                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/MySQL.jpg")
+                        .bgImg("")
                         .content("MySql")
                         .build(),
                 Card.builder()
                         .id(1)
                         .title("Python")
-                        .bgImg("https://niit-soft.oss-cn-hangzhou.aliyuncs.com/share-app/Python.jpg")
+                        .bgImg("")
                         .content("MySql")
                         .build(),
         };

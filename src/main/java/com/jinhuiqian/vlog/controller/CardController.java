@@ -23,10 +23,6 @@ public class CardController {
     public ResponseResult getCards(){
         List<Card> cards = DataUtil.initCards();
         ResultCode success = ResultCode.SUCCESS;
-        return ResponseResult.builder()
-                .code(success.code())
-                .msg(success.message())
-                .data(cards)
-                .build();
+        return ResponseResult.success(cards);
     }
 }

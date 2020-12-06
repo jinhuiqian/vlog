@@ -48,4 +48,16 @@ class UserMapperTest {
         User user = userMapper.findUserByPhone("15161659812");
         log.info(String.valueOf(user));
     }
+
+    @Test
+    void updateUser() throws Exception {
+        User user = userMapper.findUserByPhone("18552415135");
+        user.setPassword(DigestUtils.md5Hex("123456"));
+        user.setNickname("钱锦辉");
+        user.setAvatar("");
+        user.setGender(Gender.female.type);
+        user.setBirthday(LocalDate.of(2000,11,29));
+        user.setAddress("江苏省无锡市");
+        userMapper.updateUser(user);
+    }
 }

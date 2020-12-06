@@ -1,6 +1,7 @@
 package com.jinhuiqian.vlog.service;
 
 import com.jinhuiqian.vlog.model.dto.LoginDto;
+import com.jinhuiqian.vlog.model.dto.PhoneLoginDto;
 import com.jinhuiqian.vlog.model.entity.User;
 
 /**
@@ -20,4 +21,15 @@ public interface UserService {
      * 根据手机号查找用户
      */
     User getUser(String phone);
+
+    /**
+     * 手机短信验证码登录
+     *
+     */
+    boolean phoneLogin(PhoneLoginDto phoneLoginDto);
+
+    /**
+     * 修改用户信息
+     */
+    User updateUser(User user);
 }

@@ -3,6 +3,7 @@ package com.jinhuiqian.vlog.service;
 import com.jinhuiqian.vlog.model.dto.LoginDto;
 import com.jinhuiqian.vlog.model.dto.PhoneLoginDto;
 import com.jinhuiqian.vlog.model.entity.User;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author 231
@@ -32,4 +33,13 @@ public interface UserService {
      * 修改用户信息
      */
     User updateUser(User user);
+
+    /**
+     * 上传文件到OSS
+     *
+     * @param file 文件对象
+     * @return 上传后的url
+     *
+     */
+    String uploadFile(MultipartFile file);
 }

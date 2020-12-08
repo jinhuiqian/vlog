@@ -5,6 +5,7 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.jinhuiqian.vlog.mapper.UserMapper;
 import com.jinhuiqian.vlog.model.dto.LoginDto;
 import com.jinhuiqian.vlog.model.dto.PhoneLoginDto;
+import com.jinhuiqian.vlog.model.dto.WxLoginDto;
 import com.jinhuiqian.vlog.model.entity.User;
 import com.jinhuiqian.vlog.service.RedisService;
 import com.jinhuiqian.vlog.service.UserService;
@@ -100,9 +101,14 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user) {
         //先查出数据库原用户信息
         User savedUser = getUser(user.getPhone());
-        //相应字段的修改，注意前端传值的时候这些字段如果没有修改也需要传原值，以免被覆盖为空
-        savedUser.setPassword(DigestUtils.md5Hex(user.getPassword()));
-        savedUser.setNickname(user.getAddress());
+        //密码字段，如果是修改密码的请求，需要将传来的密码加密
+        if(!user.getPassword().equals(savedUser.getPassword())) {
+            savedUser.setPassword(DigestUtils.md5Hex(user.getPassword()));
+        } else {
+            //否则就是修改其他信息，密码直接赋值，以免被覆盖为空
+            savedUser.setPassword(user.getPassword());
+        }
+        savedUser.setNickname(user.getNickname());
         savedUser.setAvatar(user.getAvatar());
         savedUser.setGender(user.getGender());
         savedUser.setBirthday(user.getBirthday());
@@ -144,6 +150,33 @@ public class UserServiceImpl implements UserService {
         //关闭OSSClient
         ossClient.shutdown();
         return uploadFileName;
+    }
+
+    @Override
+    public User wxLogin(WxLoginDto wxLoginDto) {
+        User user = null;
+        try {
+            user = userMapper.fineUserByOpenId(wxLoginDto.getWxOpenId());
+        }catch (SQLException throwables) {
+            System.err.println("根据微信OpenId查找用户出现异常");
+        }
+        //新用户
+        if(user == null) {
+            user = User.builder()
+                    .wxOpenId(wxLoginDto.getWxOpenId())
+                    .nickname(wxLoginDto.getNickname())
+                    .avatar(wxLoginDto.getAvatar())
+                    .gender(wxLoginDto.getGender())
+                    .createTime(LocalDateTime.now())
+                    .build();
+            try {
+                userMapper.insert(user);
+            } catch (SQLException throwables) {
+                System.err.println("新增用户出现异常");
+            }
+        }
+        //老用户
+        return user;
     }
 
 }

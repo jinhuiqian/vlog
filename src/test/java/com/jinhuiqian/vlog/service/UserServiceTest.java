@@ -45,9 +45,9 @@ class UserServiceTest {
     @Test
     void updateUser() {
         User user = User.builder()
-                .phone("18552415135")
+                .phone("15161659812")
                 .password(DigestUtils.md5Hex("123456"))
-                .nickname("jinhuiqian")
+                .nickname("g6jrthyujik")
                 .avatar("")
                 .gender(Gender.secret.type)
                 .birthday(LocalDate.of(2000,11,29))

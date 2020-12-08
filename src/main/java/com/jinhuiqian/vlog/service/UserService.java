@@ -2,6 +2,7 @@ package com.jinhuiqian.vlog.service;
 
 import com.jinhuiqian.vlog.model.dto.LoginDto;
 import com.jinhuiqian.vlog.model.dto.PhoneLoginDto;
+import com.jinhuiqian.vlog.model.dto.WxLoginDto;
 import com.jinhuiqian.vlog.model.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,4 +43,13 @@ public interface UserService {
      *
      */
     String uploadFile(MultipartFile file);
+
+    /**
+     * 微信登录
+     *
+     * @param wxLoginDto
+     * @return boolean
+     *
+     */
+    User wxLogin(WxLoginDto wxLoginDto);
 }

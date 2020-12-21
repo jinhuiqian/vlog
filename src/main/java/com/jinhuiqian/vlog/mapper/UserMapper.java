@@ -47,6 +47,15 @@ public interface UserMapper {
     void updateUser(User user) throws SQLException;
 
     /**
+     * 绑定手机
+     *
+     * @param user
+     * @throws SQLException
+     */
+    @Update("UPDATE t_user SET phone=#{phone} WHERE wx_openid=#{wx_openid}")
+    void bindPhone(User user) throws SQLException;
+
+    /**
      * 根据微信openId查询用户信息
      *
      * @param wxOpenId 微信openId

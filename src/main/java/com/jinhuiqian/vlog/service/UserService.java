@@ -1,8 +1,6 @@
 package com.jinhuiqian.vlog.service;
 
-import com.jinhuiqian.vlog.model.dto.LoginDto;
-import com.jinhuiqian.vlog.model.dto.PhoneLoginDto;
-import com.jinhuiqian.vlog.model.dto.WxLoginDto;
+import com.jinhuiqian.vlog.model.dto.*;
 import com.jinhuiqian.vlog.model.entity.User;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,4 +50,13 @@ public interface UserService {
      *
      */
     User wxLogin(WxLoginDto wxLoginDto);
+
+    /**
+     *验证码登录
+     *
+     * @param captchaLoginDto
+     * @return User
+     */
+    User captchaLogin(CaptchaLoginDto captchaLoginDto);
+
 }

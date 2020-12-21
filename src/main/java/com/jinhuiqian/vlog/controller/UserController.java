@@ -2,9 +2,7 @@ package com.jinhuiqian.vlog.controller;
 
 import com.jinhuiqian.vlog.common.ResponseResult;
 import com.jinhuiqian.vlog.common.ResultCode;
-import com.jinhuiqian.vlog.model.dto.LoginDto;
-import com.jinhuiqian.vlog.model.dto.PhoneLoginDto;
-import com.jinhuiqian.vlog.model.dto.WxLoginDto;
+import com.jinhuiqian.vlog.model.dto.*;
 import com.jinhuiqian.vlog.model.entity.User;
 import com.jinhuiqian.vlog.service.RedisService;
 import com.jinhuiqian.vlog.service.UserService;
@@ -83,6 +81,7 @@ public class UserController {
         return ResponseResult.success(newUser);
     }
 
+
     @PostMapping(value = "/upload")
     public ResponseResult uploadFile(MultipartFile file) {
         //声明图片的地址路径，返回到前端
@@ -106,6 +105,16 @@ public class UserController {
     public ResponseResult wxLogin(@RequestBody WxLoginDto wxLoginDto) {
         log.info("wxLoginDto:" + wxLoginDto);
         User user = userService.wxLogin(wxLoginDto);
+        if(user != null) {
+            return ResponseResult.success(user);
+        }
+        return ResponseResult.failure(ResultCode.USER_SIGN_IN_FAIL);
+    }
+
+    @PostMapping(value = "/captchaLogin")
+    public ResponseResult captchaLogin(@RequestBody CaptchaLoginDto captchaLoginDto) {
+        log.info("captchaLoginDto:" + captchaLoginDto);
+        User user = userService.captchaLogin(captchaLoginDto);
         if(user != null) {
             return ResponseResult.success(user);
         }
